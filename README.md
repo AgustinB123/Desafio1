@@ -23,15 +23,17 @@ Ejemplo del deploy en Azure:
    ```bash
    git clone https://github.com/AgustinB123/Desafio1.git
    cd Desafio1
-   Crear y activar entorno virtual
    ```
-
+Crear y activar entorno virtual
 bash
-Copiar
-Editar
 python -m venv .venv
 source .venv/bin/activate # En Linux/Mac
 .venv\Scripts\activate # En Windows
+
+Desactivar .venv
+bash
+deactivate
+
 Instalar dependencias
 
 bash
