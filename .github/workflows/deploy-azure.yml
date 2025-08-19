@@ -27,8 +27,13 @@ jobs:
         with:
           python-version: "3.11"
           cache: "pip"
+
       - run: pip install -r requirements.txt
-      - run: pytest -q
+
+      - name: Run tests
+        run: python -m pytest -q
+        env:
+          PYTHONPATH: ${{ github.workspace }}
 
       # ---- Login a ACR ----
       - name: Log in to ACR
