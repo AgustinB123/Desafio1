@@ -1,5 +1,22 @@
-# main.py
-# Entry point for the time API application
+from fastapi import FastAPI
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+import os
 
-if __name__ == "__main__":
-    print("Time API is running.")
+app = FastAPI(title="Time API (FastAPI)")
+
+@app.get("/api/health")
+def health():
+    return {"ok": True}
+
+@app.get("/api/time")
+def get_time():
+    now_utc = datetime.now(timezone.utc)
+    # Detecta zona local del sistema si existe, si no deja UTC
+    tzname = os.environ.get("TZ") or \
+             datetime.now().astimezone().tzinfo.key if hasattr(datetime.now().astimezone().tzinfo, "key") else "UTC"
+    return {
+        "iso": now_utc.isoformat(),
+        "epoch_ms": int(now_utc.timestamp() * 1000),
+        "timezone": tzname
+    }
