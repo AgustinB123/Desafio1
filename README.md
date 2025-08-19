@@ -35,14 +35,10 @@ source .venv/bin/activate # En Linux/Mac
 Instalar dependencias
 
 bash
-Copiar
-Editar
 pip install -r requirements.txt
 Levantar servidor local (con Uvicorn)
 
 bash
-Copiar
-Editar
 uvicorn app.main:app --reload --port 8080
 Ahora podés entrar en 👉 http://127.0.0.1:8080
 
