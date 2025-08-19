@@ -5,6 +5,10 @@ import os
 
 app = FastAPI(title="Time API (FastAPI)")
 
+@app.get("/")
+def root():
+    return {"message": "Bienvenido a la Time API 🚀. Probá /api/health o /api/time"}
+
 @app.get("/api/health")
 def health():
     return {"ok": True}
